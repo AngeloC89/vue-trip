@@ -1,5 +1,5 @@
 <template>
-    <div class="row gap-1">
+    <div class="row ">
 
     <router-link :to="{ name: 'days', params: { id: city.Id } }" class=" p-0 debug" v-for="(city, index) in city"
     :key="city.Id">
@@ -45,5 +45,10 @@
         height: 100px;
         width: calc(100% / 3 - 4px);
 
+    }
+
+    .row{
+
+        gap: 6px;
     }
 </style>
