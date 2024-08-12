@@ -1,4 +1,5 @@
 <template>
+  <HeaderComponent />
   <!-- in questa pagina troviamo tutte le citta -->
   <div class="row">
     <router-link
@@ -33,9 +34,14 @@
 </template>
 
 <script>
+import HeaderComponent from "@/components/HeaderComponent.vue";
 import { city } from "../City.js";
 export default {
   name: "AppHome",
+  components: {
+     HeaderComponent,
+
+  },
   data() {
     return {
       city,

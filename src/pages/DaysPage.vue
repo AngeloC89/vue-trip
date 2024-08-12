@@ -1,28 +1,35 @@
 <template>
-    <div class="row ">
+    <Breadcrumb />
+    <div class="container">
+        <div class="row ">
 
-        <router-link id="daySquare" :to="{ name: 'details', params: { id: days.Id } }" class=" p-0 debug" v-for="(day, index) in days"
-        :key="day.Id">
-            <div class="col-sm-4 w-100 debug d-flex justify-content-center align-items-center">
-    
-    
-                <h3 class="text-center text-black"> {{ day.Day }}</h3>
-    
-    
-            </div>
-        </router-link>
-        <router-link id="addDay" :to="{ name: 'dayform' }"> 
-        <div class="col-sm-4 debug d-flex justify-content-center align-items-center w-100 display-4 my-5">
-            <i class="fa-solid fa-plus  text-black"></i>
+            <router-link id="daySquare" :to="{ name: 'details', params: { id: days.Id } }" class=" p-0 debug"
+                v-for="(day, index) in days" :key="day.Id">
+                <div class="col-sm-4 w-100 debug d-flex justify-content-center align-items-center">
+
+
+                    <h3 class="text-center text-black"> {{ day.Day }}</h3>
+
+
+                </div>
+            </router-link>
+            <router-link id="addDay" :to="{ name: 'dayform' }">
+                <div class="col-sm-4 debug d-flex justify-content-center align-items-center w-100 display-4 my-5">
+                    <i class="fa-solid fa-plus  text-black"></i>
+                </div>
+            </router-link>
         </div>
-    </router-link>
     </div>
 </template>
 
 <script>
+    import Breadcrumb from '@/components/Breadcrumb.vue'
     import { days } from '../Days.js'
     export default {
         name: 'DaysPage',
+        components: {
+            Breadcrumb
+        },
         data() {
             return {
                 days,
@@ -32,18 +39,19 @@
 </script>
 
 <style lang="scss" scoped>
-.debug {
-    border: 1px solid red;
-    height: 100px;
-    width: calc(100% / 3 - 4px);
-}
+    .debug {
+        border: 1px solid red;
+        height: 100px;
+        width: calc(100% / 3 - 4px);
+    }
 
-.row{
+    .row {
 
-    gap: 6px;
-}
+        gap: 6px;
+    }
 
-#daySquare, #addDay {
-    text-decoration: none;
-  }
+    #daySquare,
+    #addDay {
+        text-decoration: none;
+    }
 </style>
