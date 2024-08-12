@@ -55,4 +55,9 @@ export const city = [
         "City": "Amsterdam",
         "cover": "https://www.holland.com/upload_mm/2/3/6/75601_fullimage_aerial%20view%20of%20downtown%20amsterdam%2C%20the%20netherlands%20during%20a%20dramatic%20beautiful%20sunset%20foto%20repistu%20via%20istock.jpg",
     },
+    {
+        "Id": 12,
+        "City": "Amman",
+        "cover": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Amman_-_Jamaa%27s_Castle.jpg/1200px-Amman_-_Jamaa%27s_Castle.jpg",
+    }
 ]
