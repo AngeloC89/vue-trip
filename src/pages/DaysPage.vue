@@ -3,17 +3,17 @@
     <div class="container">
         <h1 class="text-center">Nome della Città selezionata</h1>
         <div class="row ">
-            <div class="card" v-for="(item, index) in day" :key="item.city_id">
+            <div class="p-0 debug d-flex justify-content-center align-items-center" v-for="(item, index) in day" :key="item.city_id">
 
                 <CardDay :item="item" />
 
 
             </div>
 
-            <router-link id="addDay" :to="{ name: 'dayform' }">
-                <div class="col-sm-4 debug d-flex justify-content-center align-items-center w-100 display-4 my-5">
+            <router-link class="p-0 debug d-flex justify-content-center align-items-center display-4" id="addDay" :to="{ name: 'dayform' }">
+            
                     <i class="fa-solid fa-plus  text-black"></i>
-                </div>
+            
             </router-link>
         </div>
     </div>
@@ -76,7 +76,7 @@
         background-color: yellow;
     }
 
-    #daySquare,
+  
     #addDay {
         text-decoration: none;
     }

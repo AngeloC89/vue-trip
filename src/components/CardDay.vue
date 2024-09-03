@@ -1,12 +1,7 @@
 <template>
     <div>
         <div id="daySquare">
-            <div class="col-sm-4 w-100 h-100 debug d-flex justify-content-center align-items-center" :style="{
-                backgroundColor: 'yellow',
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-            }">
+            <div class="col-sm-4 w-100 h-100">
                 <h3 class="text-center text-black">{{ item.day_name }}</h3>
             </div>
         </div>
@@ -27,4 +22,9 @@
 
 <style lang="scss" scoped>
 
+.debug {
+    border: 1px solid red;
+    height: 100px;
+    width: calc(100% / 3 - 4px);
+  }
 </style>
