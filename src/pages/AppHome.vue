@@ -2,25 +2,14 @@
   <HeaderComponent />
   <!-- in questa pagina troviamo tutte le citta -->
   <div class="row">
-    <router-link
-      id="CitySquare"
-      :to="{ name: 'days', params: { id: city.Id } }"
-      class="p-0 debug"
-      v-for="(city, index) in city"
+    <div
+     v-for="(city, index) in store.city"
       :key="city.Id"
+      id="CitySquare"    
+      class="p-0 debug"    
     >
-      <div
-        class="col-sm-4 w-100 debug d-flex justify-content-center align-items-center"
-        :style="{
-          backgroundImage: `url(${city.cover})`,
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-        }"
-      >
-        <h3 class="text-center text-black">{{ city.City }}</h3>
-      </div>
-    </router-link>
+     <CardComponent :item="city"/>
+    </div>
 
     <!-- in questa riga aggiungiamo un pulsante cbhe serve per creare un nuovo evento -->
     <router-link id="addCity" :to="{ name: 'cityform' }" class="p-0 debug">
@@ -35,18 +24,35 @@
 
 <script>
 import HeaderComponent from "@/components/HeaderComponent.vue";
-import { city } from "../City.js";
+import CardComponent from "@/components/CardComponent.vue";
+import { store } from "../store.js";
+import axios from "axios";
 export default {
   name: "AppHome",
   components: {
      HeaderComponent,
+     CardComponent,
+
 
   },
   data() {
     return {
-      city,
+      store,
+      city: null,
     };
+   
   },
+  methods: {
+    getCity(){
+      axios.get('http://127.0.0.1:8000/api/city').then((res) => {
+        this.store.city = res.data.results
+        console.log(this.store.city);
+      })
+    },
+  },
+  mounted() {
+      this.getCity()
+    },
 };
 </script>
 
@@ -61,7 +67,7 @@ export default {
   gap: 6px;
 }
 
-#CitySquare, #addCity {
+#addCity {
   text-decoration: none;
 }
 </style>

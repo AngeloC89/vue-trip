@@ -1,18 +1,15 @@
 <template>
     <Breadcrumb />
     <div class="container">
+        <h1 class="text-center">Nome della Città selezionata</h1>
         <div class="row ">
+            <div class="card" v-for="(item, index) in day" :key="item.city_id">
 
-            <router-link id="daySquare" :to="{ name: 'details', params: { id: days.Id } }" class=" p-0 debug"
-                v-for="(day, index) in days" :key="day.Id">
-                <div class="col-sm-4 w-100 debug d-flex justify-content-center align-items-center">
-
-
-                    <h3 class="text-center text-black"> {{ day.Day }}</h3>
+                <CardDay :item="item" />
 
 
-                </div>
-            </router-link>
+            </div>
+
             <router-link id="addDay" :to="{ name: 'dayform' }">
                 <div class="col-sm-4 debug d-flex justify-content-center align-items-center w-100 display-4 my-5">
                     <i class="fa-solid fa-plus  text-black"></i>
@@ -24,17 +21,40 @@
 
 <script>
     import Breadcrumb from '@/components/Breadcrumb.vue'
-    import { days } from '../Days.js'
+    import CardDay from '@/components/CardDay.vue';
+    import axios from 'axios';
+
+    import { store } from '../store.js';
     export default {
         name: 'DaysPage',
         components: {
-            Breadcrumb
+            Breadcrumb,
+            CardDay,
         },
         data() {
             return {
-                days,
+                store,
+                day: [],
+                cityId: '',
+
             }
         },
+        methods: {
+            getDays() {
+                axios.get('http://127.0.0.1:8000/api/day/' + this.cityId)
+                    .then((res) => {
+                        this.day = res.data;
+                        console.log(this.day);
+                    });
+            },
+        },
+
+        mounted() {
+            this.cityId = this.$route.params.city_id
+            this.getDays();
+        },
+
+
     }
 </script>
 
@@ -48,6 +68,12 @@
     .row {
 
         gap: 6px;
+    }
+
+    button {
+        height: 30px;
+        width: 100px;
+        background-color: yellow;
     }
 
     #daySquare,

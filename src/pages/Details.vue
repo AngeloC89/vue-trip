@@ -1,4 +1,5 @@
 <template>
+    <Breadcrumb />
     <div class="container w-100 row p-0 debug">
         <img class="col-sm-4" src="" alt="">
     
@@ -7,10 +8,13 @@
 </template>
 
 <script>
+import Breadcrumb from '@/components/Breadcrumb.vue';
+
    
 
     export default {
         name: 'Details',
+        components: { Breadcrumb },
         data() {
             return {
                

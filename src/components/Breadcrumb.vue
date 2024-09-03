@@ -1,21 +1,51 @@
 <template>
     <div id="breadcrumb">
-        <div id="home">
-            <h3>Home</h3>
-        </div>
-        <div id="day">
-            <h3>Day</h3>
-        </div>
-        <div id="details">
-            <h3>Details</h3>
-        </div>
+        <!-- pulsante per tornare alla home -->
+        <router-link id="home" :to="{ name: 'home' }">
+            <div class="breadcrumb-item">
+                <i class="fa-solid fa-house"></i>
+            </div>
+        </router-link>
+        <!-- pulsante per tornare alla pagina dei giorni -->
+        <router-link id="day" :to="{ name: 'days' }">
+            <div class="breadcrumb-item">
+                <i class="fa-solid fa-calendar-days"></i>
+            </div>
+        </router-link>
 
-
+        <div id="details" class="breadcrumb-item" v-if="this.$route.name === 'details'">
+            <i class="fa-solid fa-gear"></i>
+        </div>
     </div>
 </template>
 
 <script>
+import { store } from '../store.js'
     export default {
+        name: 'Breadcrumb',
+        data() {
+            return {
+                store,
+                current:''
+                
+
+            }
+        },
+        methods: {
+            
+
+        },
+        computed: {
+            IdCurrent() {
+            const id = this.$route.params.id
+                this.current = id
+            }
+        },
+        mounted() {
+          
+         
+           
+        },
 
     }
 </script>
@@ -29,14 +59,20 @@
         margin-bottom: 50px;
     }
 
-    #home, #day, #details {
+    #home,
+    #day,
+    #details {
         height: 100px;
+        width: 100%;
         color: rgb(255, 255, 255);
-        margin: 0px 30px;
+        font-size: 3rem;
         display: flex;
         justify-content: center;
-        align-items: center
-
+        align-items: center;
+        border-right: 3px solid white;
     }
+
+
+
 
 </style>

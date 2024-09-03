@@ -13,16 +13,19 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: AppHome, 
+     
     },
     {
-      path: "/days/:id",
+      path: "/days/:city_id",
       name: "days",
       component: DaysPage, 
+     
     },
     {
       path: "/details/:id",
       name: "details",
       component: Details,
+     
     },
     {
       path: "/cityform",
